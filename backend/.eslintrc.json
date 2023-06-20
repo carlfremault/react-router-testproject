@@ -16,7 +16,7 @@
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
-    "indent": ["error", "tab"],
+    "indent": "off",
     "linebreak-style": ["error", "windows"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
