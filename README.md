@@ -4,11 +4,20 @@ A small project to practice using the react-router-dom package as well as a very
 
 ## Frameworks & packages used so far
 
-- TypeScript
-- Express
+-   TypeScript
+-   React
+-   React-dom
+-   React-router-dom
 
-- ESLint
-- Prettier
+-   Express
+
+-   ESLint
+-   Prettier
+-   Vite
+
+## What I've learned so far
+
+-   Setting up a monorepo fullstack Typescript/React/Express app
 
 ## Motivations
 
