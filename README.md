@@ -2,7 +2,7 @@
 
 A small project to practice using the react-router-dom package as well as a very basic Express backend.
 
-## Frameworks & packages used so far
+## Frameworks, packages, tools & resources used so far
 
 -   TypeScript
 -   React
@@ -14,6 +14,8 @@ A small project to practice using the react-router-dom package as well as a very
 -   ESLint
 -   Prettier
 -   Vite
+
+-   Elad2412's [2023 CSS reset](https://elad2412.github.io/the-new-css-reset/)
 
 ## What I've learned so far
 

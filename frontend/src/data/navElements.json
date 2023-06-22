@@ -1,0 +1,16 @@
+{
+  "navElements": [
+    {
+      "path": "/",
+      "label": "Home"
+    },
+    {
+      "path": "/notes",
+      "label": "Notes"
+    },
+    {
+      "path": "/about",
+      "label": "About"
+    }
+  ]
+}

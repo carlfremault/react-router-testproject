@@ -1,27 +1,32 @@
-import { useEffect, useState } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Root from './pages/Root';
+import Home from './pages/Home';
+import Notes from './pages/Notes';
+import About from './pages/About';
 
-const getText = async () => {
-  const response = await fetch('http://localhost:8080/');
-  const data = await response.text();
-  return data;
-};
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+    children: [
+      {
+        index: true,
+        element: <Home />,
+      },
+      {
+        path: 'notes',
+        element: <Notes />,
+      },
+      {
+        path: 'about',
+        element: <About />,
+      },
+    ],
+  },
+]);
 
 function App() {
-  const [text, setText] = useState('');
-
-  useEffect(() => {
-    const loadData = async () => {
-      const res = await getText();
-      setText(res);
-    };
-    loadData();
-  }, []);
-
-  return (
-    <>
-      <p>{text}</p>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
