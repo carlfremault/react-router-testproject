@@ -17,7 +17,11 @@ const Home = () => {
     loadData();
   }, []);
 
-  return <h1>{text}</h1>;
+  return (
+    <section>
+      <h1>{text}</h1>
+    </section>
+  );
 };
 
 export default Home;
