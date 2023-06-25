@@ -4,10 +4,14 @@ import data from '../data/navElements.json';
 const Navbar = () => {
   return (
     <nav>
-      <ul>
+      <ul className="navbar">
         {data.navElements.map((navElement) => (
-          <li>
-            <NavLink key={navElement.label} to={navElement.path}>
+          <li key={navElement.label}>
+            <NavLink
+              to={navElement.path}
+              className={({ isActive }) => (isActive ? 'active' : '')}
+              end
+            >
               {navElement.label}
             </NavLink>
           </li>

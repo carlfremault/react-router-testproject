@@ -1,5 +1,9 @@
 const Notes = () => {
-  return <h1>Notes</h1>;
+  return (
+    <section>
+      <h1>Notes</h1>
+    </section>
+  );
 };
 
 export default Notes;
