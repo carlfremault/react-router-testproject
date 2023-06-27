@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
-const Root = () => {
+const RootLayout = () => {
   const location = useLocation();
 
   const getPageTitle = (pathname: string) => {
@@ -32,4 +32,4 @@ const Root = () => {
   );
 };
 
-export default Root;
+export default RootLayout;

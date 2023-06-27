@@ -23,10 +23,27 @@ main {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-block-start: $base-margin * 2;
 }
 
 h1 {
   font-size: 2rem;
   line-height: $base-line-height * 1.5;
+  margin-block-end: $base-margin;
+}
+
+h2 {
+  font-size: 1.3rem;
+  line-height: $base-line-height;
+}
+
+a:hover {
+  color: $secondary-accent;
+}
+
+a.active {
+  color: $secondary-active;
 }

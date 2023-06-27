@@ -1,0 +1,13 @@
+.menu {
+  display: flex;
+  flex-direction: row;
+  margin-block-end: $base-margin * 3;
+
+  a {
+    padding-inline: $base-padding;
+
+    &:not(:last-child) {
+      border-right: 1px solid $primary;
+    }
+  }
+}
