@@ -35,6 +35,11 @@ h1 {
   margin-block-end: $base-margin;
 }
 
+h2 {
+  font-size: 1.3rem;
+  line-height: $base-line-height;
+}
+
 a:hover {
   color: $secondary-accent;
 }

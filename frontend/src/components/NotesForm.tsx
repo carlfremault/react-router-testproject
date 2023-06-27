@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Form } from 'react-router-dom';
+import { nanoid } from 'nanoid';
 
 const defaultNote: Note = {
+  id: nanoid(),
   title: '',
   category: '',
   content: '',

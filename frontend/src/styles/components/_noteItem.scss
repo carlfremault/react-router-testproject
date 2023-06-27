@@ -1,0 +1,20 @@
+.note-item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-bottom: 1px solid $primary;
+  min-width: 50%;
+  padding: $base-padding;
+
+  span {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  em {
+    font-style: italic;
+  }
+}

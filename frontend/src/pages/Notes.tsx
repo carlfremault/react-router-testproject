@@ -1,4 +1,5 @@
 import { useLoaderData, json } from 'react-router-dom';
+import NoteItem from '../components/NoteItem';
 
 const Notes = () => {
   const notes = useLoaderData() as Note[];
@@ -6,7 +7,7 @@ const Notes = () => {
   return (
     <>
       {notes.map((note) => (
-        <p key={note.id}>{note.title}</p>
+        <NoteItem note={note} key={note.id} />
       ))}
     </>
   );
