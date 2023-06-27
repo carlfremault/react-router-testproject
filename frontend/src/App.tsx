@@ -1,13 +1,17 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import Root from './pages/Root';
+import RootLayout from './pages/RootLayout';
+import Error from './pages/Error';
 import Home from './pages/Home';
-import Notes from './pages/Notes';
+import NotesLayout from './pages/NotesLayout';
+import Notes, { loader as notesLoader } from './pages/Notes';
+import { NewNote } from './pages/NewNote';
 import About from './pages/About';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <Root />,
+    element: <RootLayout />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -15,7 +19,18 @@ const router = createBrowserRouter([
       },
       {
         path: 'notes',
-        element: <Notes />,
+        element: <NotesLayout />,
+        children: [
+          {
+            index: true,
+            element: <Notes />,
+            loader: notesLoader,
+          },
+          {
+            path: 'new',
+            element: <NewNote />,
+          },
+        ],
       },
       {
         path: 'about',

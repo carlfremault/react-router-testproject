@@ -23,10 +23,22 @@ main {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-block-start: $base-margin * 2;
 }
 
 h1 {
   font-size: 2rem;
   line-height: $base-line-height * 1.5;
+  margin-block-end: $base-margin;
+}
+
+a:hover {
+  color: $secondary-accent;
+}
+
+a.active {
+  color: $secondary-active;
 }

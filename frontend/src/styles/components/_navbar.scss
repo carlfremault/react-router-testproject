@@ -11,13 +11,5 @@
   li {
     padding-block: $base-padding;
     padding-inline: $base-padding * 2;
-
-    a:hover {
-      color: $secondary-accent;
-    }
-
-    a.active {
-      color: $secondary-active;
-    }
   }
 }

@@ -10,7 +10,6 @@ const Navbar = () => {
             <NavLink
               to={navElement.path}
               className={({ isActive }) => (isActive ? 'active' : '')}
-              end
             >
               {navElement.label}
             </NavLink>
