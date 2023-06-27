@@ -1,7 +1,7 @@
 # react-router-testproject
 
 A small project to practice using the react-router-dom package as well as a very basic Express backend.
-<br/>
+<br>
 
 ## Frameworks, packages, tools & resources used so far
 
@@ -9,25 +9,25 @@ A small project to practice using the react-router-dom package as well as a very
 -   React
 -   React-dom
 -   React-router-dom
-    <br/>
+    <br>
 
 -   Express
-    <br/>
+    <br>
 
 -   ESLint
 -   Prettier
 -   Vite
-    <br/>
+    <br>
 
 -   Sass
 -   Elad2412's [2023 CSS reset](https://elad2412.github.io/the-new-css-reset/)
 -   Nanoid
-    <br/>
+    <br>
 
 ## What I've learned so far
 
 -   Setting up a monorepo fullstack Typescript/React/Express app
-    <br/>
+    <br>
 
 ## Motivations
 
