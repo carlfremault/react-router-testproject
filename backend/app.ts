@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 
 const app = express();
 
@@ -17,6 +18,7 @@ const NOTES = [
   },
 ];
 
+app.use(bodyParser.json());
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,PATCH,DELETE');
@@ -30,6 +32,12 @@ app.get('/', (req, res) => {
 
 app.get('/notes', (req, res) => {
   res.send(NOTES);
+});
+
+app.post('/notes', (req, res, next) => {
+  const { id, title, category, content } = req.body;
+  NOTES.push({ id, title, category, content });
+  res.status(201).send({ message: 'Note created!' });
 });
 
 app.listen(8080, () => {

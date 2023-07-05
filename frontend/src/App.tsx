@@ -6,6 +6,7 @@ import NotesLayout from './pages/NotesLayout';
 import Notes, { loader as notesLoader } from './pages/Notes';
 import { NewNote } from './pages/NewNote';
 import About from './pages/About';
+import { action as newNoteAction } from './components/NotesForm';
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
           {
             path: 'new',
             element: <NewNote />,
+            action: newNoteAction,
           },
         ],
       },
