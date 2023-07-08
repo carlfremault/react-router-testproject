@@ -3,7 +3,7 @@ import { Form, json, redirect } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 const defaultNote: Note = {
-  id: nanoid(),
+  id: '',
   title: '',
   category: '',
   content: '',
@@ -65,7 +65,7 @@ export async function action({ request }: { request: Request }) {
   const formData = await request.formData();
 
   const noteData = {
-    id: formData.get('id'),
+    id: formData.get('id') || nanoid(),
     title: formData.get('title'),
     category: formData.get('category'),
     content: formData.get('content'),
