@@ -1,4 +1,4 @@
-import { useLoaderData, json } from 'react-router-dom';
+import { useLoaderData, json, redirect } from 'react-router-dom';
 import NoteItem from '../components/NoteItem';
 
 const Notes = () => {
@@ -28,4 +28,23 @@ export async function loader() {
   } else {
     return res.json();
   }
+}
+
+export async function action({ request }: { request: Request }) {
+  const data = await request.formData();
+  const noteId = data.get('id');
+
+  const res = await fetch(`http://localhost:8080/notes/${noteId}`, {
+    method: request.method,
+  });
+
+  if (!res.ok) {
+    throw json(
+      {
+        message: 'Could not delete note',
+      },
+      { status: 500 },
+    );
+  }
+  return redirect('/notes');
 }
