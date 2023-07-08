@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const NoteItem = ({ note }: { note: Note }) => {
   return (
@@ -10,6 +11,7 @@ const NoteItem = ({ note }: { note: Note }) => {
         </p>
       </span>
       <p>{note.content}</p>
+      <NavLink to={`/notes/${note.id}`}>Edit</NavLink>
     </article>
   );
 };

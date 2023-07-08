@@ -9,21 +9,23 @@ const defaultNote: Note = {
   content: '',
 };
 
-const NotesForm = ({ method }: { method: FormMethod }) => {
-  const [note, setNote] = useState<Note>(defaultNote);
+const NotesForm = ({ method, note }: { method: FormMethod; note?: Note }) => {
+  const [formNote, setFormNote] = useState<Note>(
+    (Array.isArray(note) && note[0]) || defaultNote,
+  );
 
   return (
     <Form method={method}>
       <fieldset>
-        <input id="id" name="id" type="hidden" value={note.id} />
+        <input id="id" name="id" type="hidden" value={formNote.id} />
         <label htmlFor="title">Title</label>
         <input
           id="title"
           name="title"
           type="text"
-          value={note.title}
+          value={formNote.title}
           onChange={(e) =>
-            setNote((prev) => ({ ...prev, title: e.target.value }))
+            setFormNote((prev) => ({ ...prev, title: e.target.value }))
           }
         />
       </fieldset>
@@ -33,9 +35,9 @@ const NotesForm = ({ method }: { method: FormMethod }) => {
           id="category"
           name="category"
           type="text"
-          value={note.category}
+          value={formNote.category}
           onChange={(e) =>
-            setNote((prev) => ({ ...prev, category: e.target.value }))
+            setFormNote((prev) => ({ ...prev, category: e.target.value }))
           }
         />
       </fieldset>
@@ -45,9 +47,9 @@ const NotesForm = ({ method }: { method: FormMethod }) => {
           id="content"
           name="content"
           rows={5}
-          value={note.content}
+          value={formNote.content}
           onChange={(e) =>
-            setNote((prev) => ({ ...prev, content: e.target.value }))
+            setFormNote((prev) => ({ ...prev, content: e.target.value }))
           }
         />
       </fieldset>
@@ -69,7 +71,9 @@ export async function action({ request }: { request: Request }) {
     content: formData.get('content'),
   };
 
-  const url = 'http://localhost:8080/notes';
+  const url = `http://localhost:8080/notes${
+    method === 'PATCH' ? '/' + noteData.id : ''
+  }`;
 
   const response = await fetch(url, {
     method: method,
