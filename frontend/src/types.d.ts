@@ -5,4 +5,4 @@ type Note = {
   content: string;
 };
 
-type FormMethod = 'POST' | 'GET';
+type FormMethod = 'POST' | 'GET' | 'PATCH' | 'DELETE';

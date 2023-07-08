@@ -6,7 +6,8 @@ import NotesLayout from './pages/NotesLayout';
 import Notes, { loader as notesLoader } from './pages/Notes';
 import { NewNote } from './pages/NewNote';
 import About from './pages/About';
-import { action as newNoteAction } from './components/NotesForm';
+import { action as editNoteAction } from './components/NotesForm';
+import { EditNote, loader as noteDetailLoader } from './pages/EditNote';
 
 const router = createBrowserRouter([
   {
@@ -30,15 +31,21 @@ const router = createBrowserRouter([
           {
             path: 'new',
             element: <NewNote />,
-            action: newNoteAction,
+            action: editNoteAction,
+          },
+          {
+            path: ':id',
+            element: <EditNote />,
+            loader: noteDetailLoader,
+            action: editNoteAction,
           },
         ],
       },
-      {
-        path: 'about',
-        element: <About />,
-      },
     ],
+  },
+  {
+    path: 'about',
+    element: <About />,
   },
 ]);
 
