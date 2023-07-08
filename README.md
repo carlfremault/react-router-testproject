@@ -1,6 +1,8 @@
 # react-router-testproject
 
 A small project to practice using the react-router-dom package as well as a very basic Express backend.
+
+Oh yeah. This turned out to be another Notes app...
 <br>
 <br>
 
@@ -26,12 +28,16 @@ A small project to practice using the react-router-dom package as well as a very
 -   Sass
 -   Elad2412's [2023 CSS reset](https://elad2412.github.io/the-new-css-reset/)
 -   Nanoid
+-   React-icons
     <br>
     <br>
 
 ## What I've learned so far
 
 -   Setting up a monorepo fullstack Typescript/React/Express app
+-   Implementing basic routing using React-router-dom's CreateBrowserRouter
+-   Implementing loader and action functions
+-   Setting up basic CRUD API routes in the backend
     <br>
     <br>
 

@@ -47,3 +47,8 @@ a:hover {
 a.active {
   color: $secondary-active;
 }
+
+button:hover {
+  background-color: $background;
+  color: $secondary-accent;
+}
