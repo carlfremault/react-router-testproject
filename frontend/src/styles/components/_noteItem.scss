@@ -1,20 +1,48 @@
 .note-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: start;
   border-bottom: 1px solid $primary;
   min-width: 50%;
+  min-height: 100px;
   padding: $base-padding;
 
   span {
     display: flex;
-    width: 100%;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
   em {
     font-style: italic;
+  }
+
+  .note-content {
+    white-space: pre-wrap;
+  }
+
+  .note-actions {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .note-action-button {
+      background-color: $background;
+    }
+    button:hover {
+      color: $secondary-accent;
+    }
+  }
+
+  &:hover {
+    .note-actions {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+    }
   }
 }

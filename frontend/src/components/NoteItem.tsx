@@ -1,5 +1,5 @@
 import { NavLink, json, useNavigate } from 'react-router-dom';
-
+import { RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri';
 const NoteItem = ({ note }: { note: Note }) => {
   const navigate = useNavigate();
   const deleteNote = async () => {
@@ -25,9 +25,15 @@ const NoteItem = ({ note }: { note: Note }) => {
           <em>{note.category}</em>
         </p>
       </span>
-      <p>{note.content}</p>
-      <NavLink to={`/notes/${note.id}`}>Edit</NavLink>
-      <button onClick={deleteNote}>Delete</button>
+      <p className="note-content">{note.content}</p>
+      <div className="note-actions">
+        <NavLink to={`/notes/${note.id}`}>
+          <RiEdit2Line size={20} />
+        </NavLink>
+        <button className="note-action-button" onClick={deleteNote}>
+          <RiDeleteBinLine size={20} />
+        </button>
+      </div>
     </article>
   );
 };
