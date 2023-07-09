@@ -7,38 +7,49 @@ form {
   padding-block: $base-padding;
   border-top: 1px solid $primary;
   border-bottom: 1px solid $primary;
-}
 
-fieldset {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 
-  margin-block-end: $base-margin;
-}
-
-input,
-textarea {
-  border: 1px solid $primary;
-  padding: $base-padding * 0.5;
-  width: 80%;
-}
-
-label {
-  margin-inline-end: $base-margin;
-
-  &:has(+ textarea) {
-    align-self: flex-start;
-    margin-block-start: $base-margin * 0.5;
+    margin-block-end: $base-margin;
   }
-}
 
-button {
-  background-color: $secondary;
-  padding: $base-padding * 0.5;
-  margin: $base-margin;
-  cursor: pointer;
-  align-self: center;
+  input,
+  textarea {
+    border: 1px solid $primary;
+    padding: $base-padding * 0.5;
+    width: 80%;
+  }
+
+  label {
+    margin-inline-end: $base-margin;
+
+    &:has(+ textarea) {
+      align-self: flex-start;
+      margin-block-start: $base-margin * 0.5;
+    }
+  }
+
+  button {
+    background-color: $secondary;
+    padding: $base-padding * 0.5;
+    margin: $base-margin;
+    cursor: pointer;
+    align-self: center;
+  }
+
+  .form-errors {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $base-padding * 0.5;
+    margin-bottom: $base-margin;
+    width: 100%;
+    color: $warning;
+    border: 1px solid $warning;
+  }
 }

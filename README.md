@@ -1,6 +1,6 @@
 # react-router-testproject
 
-A small project to practice using the react-router-dom package as well as a very basic Express backend.
+A small project to practice using the react-router-dom package including actions and loaders, as well as a very basic Express backend.
 
 Oh yeah. This turned out to be another Notes app...
 <br>
@@ -19,6 +19,11 @@ Oh yeah. This turned out to be another Notes app...
     <br>
     <br>
 
+-   Zod
+-   Nanoid
+    <br>
+    <br>
+
 -   ESLint
 -   Prettier
 -   Vite
@@ -27,7 +32,6 @@ Oh yeah. This turned out to be another Notes app...
 
 -   Sass
 -   Elad2412's [2023 CSS reset](https://elad2412.github.io/the-new-css-reset/)
--   Nanoid
 -   React-icons
     <br>
     <br>
@@ -40,6 +44,12 @@ Oh yeah. This turned out to be another Notes app...
 -   Setting up basic CRUD API routes in the backend
     <br>
     <br>
+
+## What I'd do differently next time
+
+I should have used npm workspaces with one single Typescript config for both frontend and backend. Then I could use the same types and validation schemas everywhere.
+<br>
+<br>
 
 ## Motivations
 

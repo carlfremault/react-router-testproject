@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Form, json, redirect } from 'react-router-dom';
+import { Form, json, redirect, useActionData } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
 const defaultNote: Note = {
@@ -10,12 +10,33 @@ const defaultNote: Note = {
 };
 
 const NotesForm = ({ method, note }: { method: FormMethod; note?: Note }) => {
+  const data: any = useActionData();
   const [formNote, setFormNote] = useState<Note>(
     (Array.isArray(note) && note[0]) || defaultNote,
   );
-
+  const { message } = data || {};
+  const { fieldErrors } = data?.errors || {};
+  console.log(fieldErrors);
   return (
     <Form method={method}>
+      {message ||
+        (fieldErrors && (
+          <div className="form-errors">
+            {message && <p className="form-error">{data.message}</p>}
+            {fieldErrors && (
+              <ul>
+                {Object.entries(fieldErrors).map(
+                  ([field, errors]) =>
+                    Array.isArray(errors) && (
+                      <li>
+                        {field}: {errors[0]}
+                      </li>
+                    ),
+                )}
+              </ul>
+            )}
+          </div>
+        ))}
       <fieldset>
         <input id="id" name="id" type="hidden" value={formNote.id} />
         <label htmlFor="title">Title</label>
@@ -82,6 +103,8 @@ export async function action({ request }: { request: Request }) {
     },
     body: JSON.stringify(noteData),
   });
+
+  if (response.status === 422) return response;
 
   if (!response.ok)
     throw json({ message: 'Could not save note' }, { status: 500 });
