@@ -40,7 +40,7 @@ Oh yeah. This turned out to be another Notes app...
 
 -   Setting up a monorepo fullstack Typescript/React/Express app
 -   Implementing basic routing using React-router-dom's CreateBrowserRouter
--   Implementing loader and action functions
+-   Implementing loader and action functions, including deferring
 -   Setting up basic CRUD API routes in the backend
     <br>
     <br>
