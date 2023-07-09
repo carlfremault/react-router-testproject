@@ -24,7 +24,9 @@ const Error = () => {
   return (
     <>
       <Navbar />
-      <p>{message}</p>
+      <section>
+        <p>{message}</p>
+      </section>
     </>
   );
 };
