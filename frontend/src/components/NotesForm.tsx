@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Form, json, redirect, useActionData } from 'react-router-dom';
 import { nanoid } from 'nanoid';
 
@@ -10,33 +10,42 @@ const defaultNote: Note = {
 };
 
 const NotesForm = ({ method, note }: { method: FormMethod; note?: Note }) => {
-  const data: any = useActionData();
   const [formNote, setFormNote] = useState<Note>(
     (Array.isArray(note) && note[0]) || defaultNote,
   );
+  const [formError, setFormError] = useState(false);
+  const data: any = useActionData();
   const { message } = data || {};
   const { fieldErrors } = data?.errors || {};
-  console.log(fieldErrors);
+
+  useEffect(() => {
+    if (message || fieldErrors) {
+      setFormError(true);
+      setTimeout(() => {
+        setFormError(false);
+      }, 3000);
+    }
+  }, [message, fieldErrors]);
+
   return (
     <Form method={method}>
-      {message ||
-        (fieldErrors && (
-          <div className="form-errors">
-            {message && <p className="form-error">{data.message}</p>}
-            {fieldErrors && (
-              <ul>
-                {Object.entries(fieldErrors).map(
-                  ([field, errors]) =>
-                    Array.isArray(errors) && (
-                      <li>
-                        {field}: {errors[0]}
-                      </li>
-                    ),
-                )}
-              </ul>
-            )}
-          </div>
-        ))}
+      {formError && (
+        <div className="form-errors">
+          {message && <p className="form-error">{data.message}</p>}
+          {fieldErrors && (
+            <ul>
+              {Object.entries(fieldErrors).map(
+                ([field, errors]) =>
+                  Array.isArray(errors) && (
+                    <li key={field}>
+                      {field}: {errors[0]}
+                    </li>
+                  ),
+              )}
+            </ul>
+          )}
+        </div>
+      )}
       <fieldset>
         <input id="id" name="id" type="hidden" value={formNote.id} />
         <label htmlFor="title">Title</label>
@@ -84,6 +93,7 @@ export default NotesForm;
 export async function action({ request }: { request: Request }) {
   const method = request.method;
   const formData = await request.formData();
+  const errors: any = { fieldErrors: {} };
 
   const noteData = {
     id: formData.get('id') || nanoid(),
@@ -91,6 +101,20 @@ export async function action({ request }: { request: Request }) {
     category: formData.get('category'),
     content: formData.get('content'),
   };
+
+  if (!noteData.title) {
+    errors.fieldErrors.title = ['Title is required'];
+  }
+  if (!noteData.category) {
+    errors.fieldErrors.category = ['Category is required'];
+  }
+  if (!noteData.content) {
+    errors.fieldErrors.content = ['Content is required'];
+  }
+
+  if (Object.keys(errors.fieldErrors).length) {
+    return { errors };
+  }
 
   const url = `http://localhost:8080/notes${
     method === 'PATCH' ? '/' + noteData.id : ''
