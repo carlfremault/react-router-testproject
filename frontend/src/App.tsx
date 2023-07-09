@@ -3,7 +3,10 @@ import RootLayout from './pages/RootLayout';
 import Error from './pages/Error';
 import Home from './pages/Home';
 import NotesLayout from './pages/NotesLayout';
-import Notes, { loader as notesLoader } from './pages/Notes';
+import Notes, {
+  loader as notesLoader,
+  action as deleteNoteAction,
+} from './pages/Notes';
 import { NewNote } from './pages/NewNote';
 import About from './pages/About';
 import { action as editNoteAction } from './components/NotesForm';
@@ -27,6 +30,7 @@ const router = createBrowserRouter([
             index: true,
             element: <Notes />,
             loader: notesLoader,
+            action: deleteNoteAction,
           },
           {
             path: 'new',

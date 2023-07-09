@@ -1,20 +1,12 @@
-import { NavLink, json, useNavigate } from 'react-router-dom';
+import { NavLink, useSubmit } from 'react-router-dom';
 import { RiEdit2Line, RiDeleteBinLine } from 'react-icons/ri';
+
 const NoteItem = ({ note }: { note: Note }) => {
-  const navigate = useNavigate();
-  const deleteNote = async () => {
-    const res = await fetch(`http://localhost:8080/notes/${note.id}`, {
-      method: 'DELETE',
-    });
-    if (!res.ok) {
-      throw json(
-        {
-          message: 'Could not delete note',
-        },
-        { status: 500 },
-      );
-    }
-    navigate('/notes');
+  const submit = useSubmit();
+
+  const deleteNote = () => {
+    if (confirm('Are you sure you want to delete this note?'))
+      submit({ id: note.id }, { method: 'DELETE' });
   };
 
   return (
