@@ -1,23 +1,27 @@
-import { useLoaderData, json, redirect } from 'react-router-dom';
+import { useLoaderData, json, redirect, defer, Await } from 'react-router-dom';
 import NoteItem from '../components/NoteItem';
+import { Suspense } from 'react';
 
 const Notes = () => {
-  const notes = useLoaderData() as Note[];
+  const { notes } = useLoaderData() as { notes: Note[] };
 
   return (
-    <>
-      {notes.map((note) => (
-        <NoteItem note={note} key={note.id} />
-      ))}
-    </>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Await resolve={notes}>
+        {(loadedNotes) =>
+          loadedNotes.map((note: Note) => (
+            <NoteItem note={note} key={note.id} />
+          ))
+        }
+      </Await>
+    </Suspense>
   );
 };
 
 export default Notes;
 
-export async function loader() {
+const loadNotes = async () => {
   const res = await fetch('http://localhost:8080/notes');
-
   if (!res.ok) {
     throw json(
       {
@@ -28,6 +32,10 @@ export async function loader() {
   } else {
     return res.json();
   }
+};
+
+export function loader() {
+  return defer({ notes: loadNotes() });
 }
 
 export async function action({ request }: { request: Request }) {
