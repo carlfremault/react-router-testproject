@@ -1,14 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
-import { notes as NOTES } from '../../json/notes.json';
+import db from '../../utils/dbConnection';
 
-export default function getNotes(
+export default async function getNotes(
   req: Request,
   res: Response,
   next: NextFunction,
 ) {
-  try {
-    res.send(NOTES);
-  } catch (error) {
-    next(error);
-  }
+  const query = 'SELECT * FROM notes';
+
+  await db.query(query, function (err: any, result: any, fields: any) {
+    if (err) throw err;
+    res.send(result);
+  });
 }
